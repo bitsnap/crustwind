@@ -1,0 +1,25 @@
+[package]
+name = "crustwind_tera"
+description = "Crustwind tera integration"
+version = "0.0.1"
+authors = ["Yuriy Yarosh <yuriy@yarosh.dev>"]
+documentation = "https://bitsnap.io/documentation/crustwind"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ['rlib']
+
+[dependencies]
+anyhow.workspace = true
+
+proc-macro2.workspace = true
+quote.workspace = true
+syn.workspace = true
+prettyplease.workspace = true
+
+[dev-dependencies]
+goldie.workspace = true
+
+[lints]
+workspace = true

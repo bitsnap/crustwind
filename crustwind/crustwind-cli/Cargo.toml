@@ -1,0 +1,20 @@
+[package]
+name = "crustwind_cli"
+description = "Crustwind command line interface"
+version = "0.0.1"
+authors = ["Yuriy Yarosh <yuriy@yarosh.dev>"]
+documentation = "https://bitsnap.io/documentation/"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ['rlib']
+
+[dependencies]
+anyhow = "*"
+
+[dev-dependencies]
+goldie = "*"
+
+[lints]
+workspace = true

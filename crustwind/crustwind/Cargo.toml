@@ -1,0 +1,27 @@
+[package]
+description = "Crustwind utility-first CSS framework in Rust"
+name = "crustwind"
+version = "0.0.1"
+authors = ["Yuriy Yarosh <yuriy@yarosh.dev>"]
+documentation = "https://bitsnap.io/documentation/crustwind"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ['rlib']
+
+[dependencies]
+crustwind_macro.workspace = true
+rust_decimal.workspace = true
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+
+derive_more = { workspace = true, features = ["full"] }
+
+anyhow.workspace = true
+
+[dev-dependencies]
+goldie.workspace = true
+
+[lints]
+workspace = true

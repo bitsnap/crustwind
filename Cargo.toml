@@ -1,0 +1,61 @@
+[workspace]
+resolver = "2"
+members = [
+  "crustwind/*",
+]
+
+[workspace.package]
+authors = ["Yuriy Yarosh <yuriy@yarosh.dev>"]
+license = "MPL-2.0"
+repository = "https://github.com/bitsnap/crustwind"
+documentation = "https://bitsnap.io/documentation"
+edition = "2024"
+publish = false
+
+[workspace.dependencies]
+crustwind = { path = "crustwind/crustwind" }
+crustwind_cli = { path = "crustwind/crustwind-cli" }
+crustwind_inline = { path = "crustwind/crustwind-inline" }
+crustwind_macro = { path = "crustwind/crustwind-macro" }
+crustwind_askama = { path = "crustwind/crustwind-templates-askama" }
+crustwind_tera = { path = "crustwind/crustwind-templates-tera" }
+
+# Stylesheets
+rust_decimal = "^1.37"
+serde = { version = "^1.0", features = ["derive"] }
+serde_json = "^1.0"
+
+# Derive
+derive_more = { version = "^2.0", features = ["display", "from", "from_str"]}
+
+# Error handling
+anyhow = "^1.0"
+
+# Macro dependencies
+proc-macro2 = "^1.0"
+quote = "^1.0"
+syn = { version = "^2.0", features = ["full", "extra-traits"] }
+prettyplease = "^0.2"
+
+# Testing
+goldie = "^0.5"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+unsafe_op_in_unsafe_fn = "forbid"
+
+[profile.dev]
+lto = false
+panic = "abort"
+debug-assertions = true
+overflow-checks = true
+opt-level = 0
+incremental = true
+
+[profile.release]
+lto = true
+panic = "abort"
+debug-assertions = false
+overflow-checks = true
+opt-level = 3
+incremental = true
