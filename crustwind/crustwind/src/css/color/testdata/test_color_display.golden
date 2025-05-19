@@ -1,0 +1,5 @@
+[
+  "color(srgb 100 50 25)",
+  "color(srgb 100 50 25 / 75)",
+  "color(display-p3 80 90 100 / 100)"
+]

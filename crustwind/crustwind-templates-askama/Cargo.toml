@@ -1,0 +1,20 @@
+[package]
+name = "crustwind_askama"
+description = "Crustwind askama integration"
+version = "0.0.1"
+authors = ["Yuriy Yarosh <yuriy@yarosh.dev>"]
+documentation = "https://bitsnap.io/documentation/crustwind"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ['rlib']
+
+[dependencies]
+anyhow = "*"
+
+[dev-dependencies]
+goldie = "*"
+
+[lints]
+workspace = true

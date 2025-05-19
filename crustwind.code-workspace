@@ -1,0 +1,78 @@
+{
+	"folders": [
+		{
+			"name": "🖥️ Crustwind",
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.cwd": ".",
+		"files.associations": {
+			"*.sql": "postgres"
+		},
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true,
+		"[rust]": {
+			"editor.semanticHighlighting.enabled": false
+		},
+		"rust-analyzer.cargo.features": [],
+		"rust-analyzer.checkOnSave": false,
+		"rust-analyzer.cargo.buildScripts.overrideCommand": null,
+		"cSpell.language": "en",
+		"cSpell.words": [
+			"askama",
+			"clippy",
+			"colgroup",
+			"Crustwind",
+			"datalist",
+			"dependi",
+			"Dioxus",
+			"dustypomerleau",
+			"fieldset",
+			"figcaption",
+			"hgroup",
+			"htmx",
+			"jscearcy",
+			"keygen",
+			"nextest",
+			"noscript",
+			"optgroup",
+			"overscroll",
+			"pkief",
+			"polymeilex",
+			"rlib",
+			"rustup",
+			"ryanluker",
+			"samp",
+			"shellcheck",
+			"Srgb",
+			"tamasfe",
+			"Tera",
+			"timonwong",
+			"Vmax",
+			"Vmin",
+			"Yarosh",
+			"Yuriy",
+			"zhangyue"
+		],
+		"workbench.iconTheme": "material-icon-theme"
+	},
+	"extensions": {
+		"recommendations": [
+			"editorconfig.editorconfig",
+			"rust-lang.rust-analyzer",
+			"dustypomerleau.rust-syntax",
+			"jscearcy.rust-doc-viewer",
+			"polymeilex.rust-targets",
+			"tamasfe.even-better-toml",
+			"zhangyue.rust-mod-generator",
+			"fill-labs.dependi",
+			"ryanluker.vscode-coverage-gutters",
+			"redhat.vscode-yaml",
+			"streetsidesoftware.code-spell-checker",
+			"pkief.material-icon-theme",
+			"mads-hartmann.bash-ide-vscode",
+			"timonwong.shellcheck"
+		]
+	}
+}

@@ -1,0 +1,50 @@
+/*
+ * Copyright (C) 2016-2025 Yuriy Yarosh
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
+use derive_more::*;
+use serde::*;
+use std::str::FromStr;
+
+#[derive(derive_more::Debug, Clone, Copy, PartialEq, Display, Serialize, Deserialize)]
+pub enum PlaceContent {
+    #[display("center")]
+    Center,
+
+    #[display("start")]
+    Start,
+
+    #[display("end")]
+    End,
+
+    #[display("flex-start")]
+    FlexStart,
+
+    #[display("flex-end")]
+    FlexEnd,
+
+    #[display("normal")]
+    Normal,
+
+    #[display("space-between")]
+    SpaceBetween,
+
+    #[display("space-around")]
+    SpaceAround,
+
+    #[display("space-evenly")]
+    SpaceEvenly,
+
+    #[display("stretch")]
+    Stretch,
+
+    #[display("baseline")]
+    Baseline,
+}
