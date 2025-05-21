@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016-2025 Yuriy Yarosh
  * All rights reserved.
  *
@@ -8,7 +8,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-
 use derive_more::*;
 use std::{
     ops::{Deref, DerefMut},
@@ -20,7 +19,8 @@ use std::{
 /// The `Variable` type is used to represent CSS variables, which are used to store and reuse values in CSS.
 ///
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Display)]
-pub struct Variable(#[display("var(--{})")] pub String);
+#[display("var(--{_0})")]
+pub struct Variable(pub String);
 
 impl Deref for Variable {
     type Target = String;

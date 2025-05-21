@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016-2025 Yuriy Yarosh
  * All rights reserved.
  *
@@ -11,7 +11,7 @@
 
 use derive_more::*;
 
-#[derive(Clone, Copy, Debug, PartialEq, Display, From)]
+#[derive(Clone, Copy, Debug, PartialEq, Display, From, FromStr)]
 pub enum Attachment {
     #[display("scroll")]
     Scroll,

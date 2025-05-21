@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016-2025 Yuriy Yarosh
  * All rights reserved.
  *
@@ -9,16 +9,24 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-pub type Image = String;
+use derive_more::*;
+use std::{
+    ops::{Deref, DerefMut},
+    str::FromStr,
+};
 
-impl From<String> for Image {
-    fn from(s: String) -> Self {
-        format!("url({})", s)
-    }
-}
+#[derive(Clone, Copy, Debug, PartialEq, Display, From)]
+#[display("url({_0})")]
+pub struct Image(pub String);
 
-impl From<&str> for Image {
-    fn from(s: &str) -> Self {
-        format!("url({})", s)
+impl FromStr for Image {
+    type Err = anyhow::Error;
+
+    /// Parses a string into a `Variable` value.
+    ///
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(Image(
+            s.replace("url(", "").replace(")", "").trim().to_string(),
+        ))
     }
 }

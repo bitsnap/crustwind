@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016-2025 Yuriy Yarosh
  * All rights reserved.
  *
@@ -76,8 +76,6 @@ pub(crate) fn unit(input: TokenStream) -> TokenStream {
             }
         }
     };
-
-    eprintln!("{}", output);
 
     output.into()
 }

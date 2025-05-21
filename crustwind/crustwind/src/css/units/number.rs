@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016-2025 Yuriy Yarosh
  * All rights reserved.
  *
@@ -8,12 +8,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-
 use derive_more::*;
+
 use std::{
     ops::{Deref, DerefMut},
     str::FromStr,
 };
+
+use serde::{Deserialize, Serialize};
 
 use rust_decimal::*;
 
@@ -21,7 +23,8 @@ use rust_decimal::*;
 ///
 /// The `Number` type is used to represent CSS `number` units, which are decimal numbers.
 ///
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Display, From)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Display, From, Serialize, Deserialize)]
+#[display("{_0}")]
 pub struct Number(pub Decimal);
 
 impl Deref for Number {
