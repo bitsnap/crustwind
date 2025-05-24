@@ -8,11 +8,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
+
 use derive_more::*;
 use std::{
     ops::{Deref, DerefMut},
     str::FromStr,
 };
+use serde::*;
 
 /// Represents a CSS `calc()` expression.
 ///
@@ -21,7 +23,7 @@ use std::{
 ///
 /// Crustwind does not interpret the calculation expression, it is simply stored as a string for simplicity.
 ///
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Display)]
+#[derive(Debug, Clone, PartialEq, Display, From, Serialize, Deserialize)]
 pub struct Calc(#[display("calc({})")] pub String);
 
 impl Deref for Calc {

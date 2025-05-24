@@ -8,9 +8,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
+
 pub(crate) mod background;
 pub(crate) mod color;
 pub(crate) mod rule;
+pub(crate) mod layout;
 pub(crate) mod units;
 
 enum Attribute {

@@ -8,19 +8,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
+
 use derive_more::*;
 use std::{
     ops::{Deref, DerefMut},
     str::FromStr,
 };
 
-mod calc;
-mod number;
-mod variable;
+pub(crate) mod calc;
+pub(crate) mod number;
+pub(crate) mod variable;
 
-use calc::*;
+pub(crate) use calc::*;
 pub(crate) use number::*;
-use variable::*;
+pub(crate) use variable::*;
 
 use crustwind_macro::css_unit;
 
@@ -52,9 +53,69 @@ pub(crate) enum LengthUnit {
     Vmax(Vmax),
 }
 
+impl FromStr for LengthUnit {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        // Try special functions first
+        if s.starts_with("calc(") && s.ends_with(")") {
+            return Calc::from_str(s).map(LengthUnit::Calc);
+        }
+
+        if s.starts_with("var(") && s.ends_with(")") {
+            return Variable::from_str(s).map(LengthUnit::Variable);
+        }
+
+        // Try number
+        Number::from_str(s)
+            .map(LengthUnit::Number)
+            .or_else(|_| {
+                // Try specific units
+                match s {
+                    _ if s.ends_with("%") => Pct::from_str(s).map(LengthUnit::Pct),
+                    _ if s.ends_with("px") => Px::from_str(s).map(LengthUnit::Px),
+                    _ if s.ends_with("em") => Em::from_str(s).map(LengthUnit::Em),
+                    _ if s.ends_with("rem") => Rem::from_str(s).map(LengthUnit::Rem),
+                    _ if s.ends_with("vw") => Vw::from_str(s).map(LengthUnit::Vw),
+                    _ if s.ends_with("vh") => Vh::from_str(s).map(LengthUnit::Vh),
+                    _ if s.ends_with("vmin") => Vmin::from_str(s).map(LengthUnit::Vmin),
+                    _ if s.ends_with("vmax") => Vmax::from_str(s).map(LengthUnit::Vmax),
+                    _ => Err(anyhow::anyhow!("Invalid length unit: {}", s)),
+                }
+            })
+    }
+}
+
 pub(crate) enum ColorUnit {
     Calc(Calc),
     Number(Number),
     Pct(Pct),
     Variable(Variable),
+}
+
+impl FromStr for ColorUnit {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        // Try special functions first
+        if s.starts_with("calc(") && s.ends_with(")") {
+            return Calc::from_str(s).map(ColorUnit::Calc);
+        }
+
+        if s.starts_with("var(") && s.ends_with(")") {
+            return Variable::from_str(s).map(ColorUnit::Variable);
+        }
+
+        // Try number
+        Number::from_str(s)
+            .map(ColorUnit::Number)
+            .or_else(|_| {
+                // Try percentage
+                if s.ends_with("%") {
+                    Pct::from_str(s).map(ColorUnit::Pct)
+                } else {
+                    Err(anyhow::anyhow!("Invalid color unit: {}", s))
+                }
+            })
+    }
 }

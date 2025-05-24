@@ -8,6 +8,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
+
 use derive_more::*;
 
 use std::{
@@ -15,7 +16,7 @@ use std::{
     str::FromStr,
 };
 
-use serde::{Deserialize, Serialize};
+use serde::*;
 
 use rust_decimal::*;
 
@@ -23,7 +24,7 @@ use rust_decimal::*;
 ///
 /// The `Number` type is used to represent CSS `number` units, which are decimal numbers.
 ///
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Display, From, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, PartialOrd, From, Display, Serialize, Deserialize)]
 #[display("{_0}")]
 pub struct Number(pub Decimal);
 
